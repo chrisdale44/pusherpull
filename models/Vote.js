@@ -1,5 +1,5 @@
 const Mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Schema = Mongoose.Schema;
 
 const VoteSchema = new Schema({
     os: {
@@ -12,4 +12,6 @@ const VoteSchema = new Schema({
     }
 })
 
-const Vote = mongoose.model('Vote', VoteSchema);
+const Vote = Mongoose.model('Vote', VoteSchema);
+
+module.exports = Vote;
