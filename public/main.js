@@ -26,19 +26,37 @@ let dataPoints = [
 
 const chartContainer = document.querySelector('#chartContainer');
 
-if(chartContainer) {
+if (chartContainer) {
     const chart = new CanvasJS.Chart('chartContainer', {
-        animationEnabled: true,
-        theme: 'theme1',
-        title: {
-            text: "OS Results"
-        },
-        data: [
-            {
-                type: 'column',
-                dataPoints: dataPoints
-            }
-        ]
+    animationEnabled: true,
+    theme: 'theme1',
+    data: [
+        {
+        type: 'column',
+        dataPoints: dataPoints
+        }
+    ]
     });
     chart.render();
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('75d7162a2785c8ce6234', {
+    cluster: 'eu',
+    encrypted: true
+    });
+
+    var channel = pusher.subscribe('os-poll');
+    channel.bind('os-vote', function(data) {
+    dataPoints = dataPoints.map(x => {
+        if (x.label == data.os) {
+        x.y += data.points;
+        return x;
+        } else {
+        return x;
+        }
+    });
+    chart.render();
+    });
 }
