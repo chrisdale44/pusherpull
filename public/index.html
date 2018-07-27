@@ -13,25 +13,33 @@
         <p>Vote for your favourite OS to develop on</p>
         <form id="vote-form">
             <p>
-                <input type="radio" name="os" id="windows" value="Windows">
-                <label for="windows">Windows</label>
+                <label for="windows">
+                    <input type="radio" name="os" id="windows" value="Windows">
+                    <span>Windows</span>
+                </label>
             </p>
             <p>
+                <label for="macos">
                 <input type="radio" name="os" id="macos" value="MacOS">
-                <label for="macos">MacOS</label>
+                <span>MacOS</span>
+                </label>
             </p>
             <p>
+                <label for="linux">
                 <input type="radio" name="os" id="linux" value="Linux">
-                <label for="linux">Linux</label>
+                <span>Linux</span>
+                </label>
             </p>
             <p>
+                <label for="other">
                 <input type="radio" name="os" id="other" value="Other">
-                <label for="other">Other</label>
+                <span>Other</span>
+                </label>
             </p>
             <input type="submit" value="Vote" class="btn">
         </form>
         <br/><br/>
-        <div id-"chartContainer" style="height: 300px; width: 100%"></div>
+        <div id="chartContainer" style="height: 300px; width: 100%"></div>
     </div>
     <script
   src="https://code.jquery.com/jquery-3.3.1.js"
